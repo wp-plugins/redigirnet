@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 
 
@@ -22,7 +22,7 @@
 
 
 
-  Version: 0.3
+  Version: 0.5
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-  define('REDIGIR_VERSION','0.3');            
+  define('REDIGIR_VERSION','0.5');            
 
 
 

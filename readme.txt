@@ -1,4 +1,4 @@
-=== Redigir.net ===
+﻿=== Redigir.net ===
 
 
 Contributors: Ricardo Silva
@@ -59,6 +59,10 @@ EN:
 Do you have questions or issues with Redigir.net plugin contact us at geral@redigir.net.
 
 == Changelog ==
+
+= 0.5 =
+
+* Remoção de bugs
 
 = 0.4 =
 
