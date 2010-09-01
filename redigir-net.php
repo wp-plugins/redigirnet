@@ -1,145 +1,41 @@
-﻿<?php
-
-
-
+<?php
   /*
-
-
-
   Plugin Name: Redigir.net
-
-
-
   Plugin URI: http://redigir.net
-
-
-
   Description: Plugin usado para fazer a interacção com a plataforma Redigir.net
-
-
-
   Author: Ricardo Silva
-
-
-
-  Version: 0.5
-
-
-
+  Version: 0.6
   Author URI: http://redigir.net
-
-
-
   */
-
-
-
-
-
-
-
   define('REDIGIR_PATH',PLUGINDIR.'/redigirnet/');
-
-
-
-  define('REDIGIR_VERSION','0.5');            
-
-
-
+  define('REDIGIR_VERSION','0.6');            
   add_action('admin_menu','redigir_add_menu_items');
-
-
-
   add_action('admin_init','redigir_register_buyer');          
 
-
-
-  
-
-
-
   // Register a new buyer
-
-
-
   function redigir_register_buyer(){      
-
-
-
       // Check if this blog is already registered
-
-
-
       if ( get_option('redigir_user_id',false) === false || get_option('redigir_user_id',false) == 0 ){                              
-
           $token = md5(time());          
-
-
-
-          
-
-
-
           $args = array(
-
-
-
               'timeout' => 3,
-
-
-
               'body' => array ('token'=>$token,'email'=>get_option('admin_email'),'name'=>get_option('blogname')),
-
-
-
               'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' )
-
-
-
           );
 
-
-
-                                        
-
-
-
           $redigir_user_id = wp_remote_retrieve_body(wp_remote_post('http://redigir.net/api/register_buyer',$args));          
-
           if ( get_option('redigir_user_id',false) === false ){
-
               add_option('redigir_user_id',intval($redigir_user_id),'','no');
-
           }          
-
           else {
-
               update_option('redigir_user_id',intval($redigir_user_id));
-
           }
 
-
-
           add_option('redigir_token',$token,'','no');
-
-
-
       }
-
-
-
   }     
 
-
-
-  
-
-
-
   // Get all the categories
-
-
-
   function redigir_get_categories(){                       
 
 
